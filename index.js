@@ -1,19 +1,20 @@
 /**
  * A progress bar
  * @constructor
- * @param   {Object}        options
- * @param   {HTMLElement}   options.el
- * @param   {Number}        [options.min]
- * @param   {Number}        [options.max]
- * @param   {Number}        [options.value]
+ * @param   {HTMLElement}   element
  */
-function ProgressBar(options) {
-  this.el           = options.el;
-  this.indicatorEl  = this.el.querySelector('.js-progress-indicator');
+function ProgressBar(element) {
 
-  this._min         = options.min || 0;
-  this._max         = options.max || 0;
-  this._value       = options.value || 0;
+  if (!(this instanceof ProgressBar)) {
+    return new ProgressBar(element);
+  }
+
+  this._min         = 0;
+  this._max         = 100;
+  this._value       = 0;
+
+  this.el            = element;
+  this._indicatorEl  = element.querySelector('.js-progress-indicator');
 
   this.render();
 }
@@ -65,7 +66,7 @@ ProgressBar.prototype.percent = function() {
  */
 ProgressBar.prototype.render = function() {
   if (this._min || this._max || this._value) {
-    this.indicatorEl.style.width = (this.percent()*this.el.offsetWidth/100)+'px';
+    this._indicatorEl.style.width = (this.percent()*this.el.offsetWidth/100)+'px';
   }
   return this;
 };

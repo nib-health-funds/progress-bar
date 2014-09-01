@@ -3,6 +3,12 @@
 var assert      = require('assert');
 var ProgressBar = require('progress-bar');
 
+var progress;
+
+/**
+ * Create a progress bar element
+ * @returns {ProgressBar}
+ */
 function createProgressBar() {
 
   var indicator = document.createElement('div');
@@ -14,18 +20,15 @@ function createProgressBar() {
   element.style.width = '1000px';
   element.appendChild(indicator);
 
-  document.body.appendChild(element);
-
-  return new ProgressBar({
-    el: element
-  });
+  return new ProgressBar(element);
 }
 
-var progress;
 describe('progress-bar', function() {
 
   beforeEach(function() {
     progress = createProgressBar();
+    document.body.appendChild(progress.el);
+
   });
 
   afterEach(function() {
@@ -41,7 +44,7 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(25, progress.percent());
-    assert.equal(250, progress.indicatorEl.offsetWidth);
+    assert.equal(250, progress._indicatorEl.offsetWidth);
 
     progress
       .min(0)
@@ -50,7 +53,7 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(25, progress.percent());
-    assert.equal(250, progress.indicatorEl.offsetWidth);
+    assert.equal(250, progress._indicatorEl.offsetWidth);
 
   });
 
