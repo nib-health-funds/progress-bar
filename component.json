@@ -1,0 +1,11 @@
+{
+  "name": "progress-bar",
+  "scripts": [
+    "index.js"
+  ],
+  "development": {
+    "dependencies": {
+      "component/assert": "*"
+    }
+  }
+}
