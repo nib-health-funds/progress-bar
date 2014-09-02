@@ -1,4 +1,3 @@
-var debounce = require('debounce');
 
 /**
  * A progress bar

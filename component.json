@@ -7,8 +7,5 @@
     "dependencies": {
       "component/assert": "*"
     }
-  },
-  "dependencies": {
-    "component/debounce": "~1.0.0"
   }
 }
