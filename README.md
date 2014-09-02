@@ -4,13 +4,25 @@ A progress bar
 
 ## Methods
 
+# .min()
+
+Get the minimum value
+
 # .min(min)
 
 Set the minimum value
 
+# .max()
+
+Get the maximum value
+
 # .max(max)
 
 Set the maximum value
+
+# .value()
+
+Get the current value
 
 # .value(value)
 

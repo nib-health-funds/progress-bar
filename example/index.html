@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Progress Bar Example</title>
+    <style>
+
+        .progress-bar {
+            border: 1px solid #000;
+        }
+
+        .progress-bar__indicator {
+            height: 3px;
+            background-color: red;
+            transition: width 1s;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar js-progress-bar">
+        <div class="progress-bar__indicator js-progress-indicator"></div>
+    </div>
+
+    <script src="../build/build.js"></script>
+    <script>
+
+        var createProgressBar = require('progress-bar');
+        var progress = createProgressBar(document.querySelector('.js-progress-bar')).max(100);
+
+        var interval = setInterval(function() {
+
+            progress.value(progress.value()+1);
+
+            if (progress.value() === 100) {
+                clearInterval(interval);
+            }
+
+        }, 100);
+
+    </script>
+</body>
+</html>

@@ -1,3 +1,5 @@
+var debounce = require('debounce');
+
 /**
  * A progress bar
  * @constructor
@@ -21,35 +23,69 @@ function ProgressBar(element) {
 
 /**
  * Set the minimum value
+ *
+ * @signature `ProgressBar.min()`
+ * @returns {Number}
+ *
+ * @signature `ProgressBar.min(min)`
  * @param   {Number} min
  * @returns {ProgressBar}
  */
 ProgressBar.prototype.min = function(min) {
-  this._min = min;
-  this.render();
-  return this;
+  if (arguments.length) {
+    this._min = min;
+    this.render();
+    return this;
+  } else {
+    return this._min;
+  }
 };
 
 /**
  * Set the maximum value
+ *
+ * @signature `ProgressBar.max()`
+ * @returns {Number}
+ *
+ * @signature `ProgressBar.max(max)`
  * @param   {Number} max
  * @returns {ProgressBar}
  */
 ProgressBar.prototype.max = function(max) {
-  this._max = max;
-  this.render();
-  return this;
+  if (arguments.length) {
+    this._max = max;
+    this.render();
+    return this;
+  } else {
+    return this._max;
+  }
 };
 
 /**
  * Set the current value
+ *
+ * @signature `ProgressBar.value()`
+ * @returns {Number}
+ *
+ * @signature `ProgressBar.value(value)`
  * @param   {Number} value
  * @returns {ProgressBar}
  */
 ProgressBar.prototype.value = function(value) {
-  this._value = value;
-  this.render();
-  return this;
+  if (arguments.length) {
+
+    //never go over 100%
+    if (value>this._max) {
+      value = 100;
+    }
+
+    this._value = value;
+    this.render();
+
+    return this;
+  } else {
+    return this._value;
+  }
 };
 
 /**
@@ -66,7 +102,7 @@ ProgressBar.prototype.percent = function() {
  */
 ProgressBar.prototype.render = function() {
   if (this._min || this._max || this._value) {
-    this._indicatorEl.style.width = (this.percent()*this.el.offsetWidth/100)+'px';
+    this._indicatorEl.style.width = this.percent()+'%';
   }
   return this;
 };

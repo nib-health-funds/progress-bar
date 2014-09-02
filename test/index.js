@@ -44,6 +44,7 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(25, progress.percent());
+    assert.equal('25%', progress._indicatorEl.style.width);
     assert.equal(250, progress._indicatorEl.offsetWidth);
 
     progress
@@ -53,7 +54,30 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(25, progress.percent());
+    assert.equal('25%', progress._indicatorEl.style.width);
     assert.equal(250, progress._indicatorEl.offsetWidth);
+
+  });
+
+  it('should change from 25% to 50%', function() {
+
+    progress
+      .min(0)
+      .max(100)
+      .value(25)
+    ;
+
+    assert.equal(25, progress.percent());
+    assert.equal('25%', progress._indicatorEl.style.width);
+    assert.equal(250, progress._indicatorEl.offsetWidth);
+
+    progress
+      .value(50)
+    ;
+
+    assert.equal(50, progress.percent());
+    assert.equal('50%', progress._indicatorEl.style.width);
+    assert.equal(500, progress._indicatorEl.offsetWidth);
 
   });
 
