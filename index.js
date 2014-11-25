@@ -75,7 +75,7 @@ ProgressBar.prototype.value = function(value) {
 
     //never go over 100%
     if (value>this._max) {
-      value = 100;
+      value = this._max;
     }
 
     this._value = value;
