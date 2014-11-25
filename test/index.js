@@ -44,6 +44,7 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(25, progress.percent());
+    assert.equal('25', progress.el.getAttribute('data-progress'));
     assert.equal('25%', progress._indicatorEl.style.width);
     assert.equal(250, progress._indicatorEl.offsetWidth);
 
@@ -54,6 +55,7 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(25, progress.percent());
+    assert.equal('25', progress.el.getAttribute('data-progress'));
     assert.equal('25%', progress._indicatorEl.style.width);
     assert.equal(250, progress._indicatorEl.offsetWidth);
 
@@ -68,6 +70,7 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(25, progress.percent());
+    assert.equal('25', progress.el.getAttribute('data-progress'));
     assert.equal('25%', progress._indicatorEl.style.width);
     assert.equal(250, progress._indicatorEl.offsetWidth);
 
@@ -76,6 +79,7 @@ describe('progress-bar', function() {
     ;
 
     assert.equal(50, progress.percent());
+    assert.equal('50', progress.el.getAttribute('data-progress'));
     assert.equal('50%', progress._indicatorEl.style.width);
     assert.equal(500, progress._indicatorEl.offsetWidth);
 

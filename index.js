@@ -101,7 +101,9 @@ ProgressBar.prototype.percent = function() {
  */
 ProgressBar.prototype.render = function() {
   if (this._min || this._max || this._value) {
-    this._indicatorEl.style.width = this.percent()+'%';
+    var percent = this.percent();
+    this.el.setAttribute('data-progress', percent.toFixed(0));
+    this._indicatorEl.style.width = percent+'%';
   }
   return this;
 };
