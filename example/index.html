@@ -12,7 +12,11 @@
         .progress-bar__indicator {
             height: 3px;
             background-color: red;
-            transition: width 1s;
+            transition: width 1s, color 1s;
+        }
+
+        .progress-bar[data-progress="100"] .progress-bar__indicator {
+            background-color: green;
         }
 
     </style>

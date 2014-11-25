@@ -1,6 +1,6 @@
 # progress-bar
 
-A progress bar
+A progress bar.
 
 ## Methods
 
