@@ -85,4 +85,23 @@ describe('progress-bar', function() {
 
   });
 
+  it('should never go over 100%', function() {
+
+    progress
+      .value(101)
+    ;
+
+    assert.equal(100, progress.value());
+    assert.equal(100, progress.percent());
+
+    progress
+      .max(50)
+      .value(51)
+    ;
+
+    assert.equal(50, progress.value());
+    assert.equal(100, progress.percent());
+
+  });
+
 });
